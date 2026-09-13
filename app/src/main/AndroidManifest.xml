@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- INTERNET is only used for the optional daily Drive backup step below -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- No storage permission needed: we write to app-specific external files dir (scoped storage safe on Android 10+) -->
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Biz Logger"
+        android:theme="@style/Theme.BizLogger">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- This alias is the actual launcher entry. Disabling it (from inside the app)
+             removes the icon from your home screen / app drawer without uninstalling
+             anything. Re-enable it from Settings > Apps > Biz Logger > "Enable" if you
+             ever need the icon back. This is a visibility toggle, not a disguise —
+             the app still shows up normally in Settings either way. -->
+        <activity-alias
+            android:name=".Launcher"
+            android:targetActivity=".MainActivity"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <!--
+            No android:foregroundServiceType, no startForeground() anywhere in the code.
+            AccessibilityServices are launched and kept alive by the system's
+            accessibility framework itself, not by us — so there is no persistent
+            notification, and no battery cost while Instagram isn't in the foreground.
+        -->
+        <service
+            android:name=".InstaLoggerService"
+            android:exported="true"
+            android:label="Biz Logger"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+    </application>
+</manifest>

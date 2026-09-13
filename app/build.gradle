@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.anil.igbizlogger'
+    compileSdk 34
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    packaging {
+        resources {
+            excludes += ["META-INF/INDEX.LIST", "META-INF/DEPENDENCIES", "META-INF/*.kotlin_module"]
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.anil.igbizlogger"
+        // minSdk 26 covers essentially every Android phone still in use, including
+        // the F34 (ships on Android 13). No internet permission requested anywhere.
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.2"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+    implementation 'androidx.biometric:biometric:1.1.0'
+
+    // Only needed for the optional daily Drive backup step.
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+    implementation('com.google.api-client:google-api-client-android:2.6.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation('com.google.apis:google-api-services-drive:v3-rev20240914-2.0.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+}

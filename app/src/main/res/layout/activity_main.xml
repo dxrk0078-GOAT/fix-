@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+<ScrollView
+    android:id="@+id/contentScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layoutAnimation="@anim/layout_stagger">
+
+    <TextView
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Biz Logger" android:textSize="24sp" android:textStyle="bold"
+        android:textColor="@color/text_dark" android:layout_marginBottom="4dp" />
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textSize="13sp" android:textColor="@color/text_muted"
+        android:layout_marginBottom="18dp" />
+
+    <!-- Accessibility status -->
+    <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle">
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\u267F" android:textSize="20sp" android:gravity="center" />
+            </FrameLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Accessibility access" android:textStyle="bold" android:textColor="@color/text_dark" android:textSize="15sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Required once — Android controls this, not the app." android:textSize="12sp" android:textColor="@color/text_muted" />
+            </LinearLayout>
+            <Button android:id="@+id/btnEnable" style="?attr/materialButtonOutlinedStyle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Open" android:textSize="12sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Export passphrase -->
+    <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle">
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\uD83D\uDD11" android:textSize="18sp" android:gravity="center" />
+                </FrameLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Export passphrase" android:textStyle="bold" android:textColor="@color/text_dark" android:textSize="15sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Protects your daily encrypted backups." android:textSize="12sp" android:textColor="@color/text_muted" />
+                </LinearLayout>
+            </LinearLayout>
+            <EditText android:id="@+id/etPassphrase" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword" android:hint="New passphrase" android:background="@android:color/transparent" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="6dp">
+                <Button android:id="@+id/btnSavePassphrase" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Save" android:textSize="12sp" android:layout_marginEnd="6dp" />
+                <Button android:id="@+id/btnShowPassphrase" style="?attr/materialButtonOutlinedStyle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Show" android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Export schedule -->
+    <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle">
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\u23F1\uFE0F" android:textSize="18sp" android:gravity="center" />
+                </FrameLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Export schedule" android:textStyle="bold" android:textColor="@color/text_dark" android:textSize="15sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="When to create the encrypted daily backup." android:textSize="12sp" android:textColor="@color/text_muted" />
+                </LinearLayout>
+            </LinearLayout>
+            <Spinner android:id="@+id/spinnerExportMode" android:layout_width="match_parent" android:layout_height="wrap_content" />
+            <Button android:id="@+id/btnExportNow" style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Export now" android:textSize="12sp" android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Drive backup -->
+    <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle">
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\u2601\uFE0F" android:textSize="18sp" android:gravity="center" />
+                </FrameLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Google Drive backup" android:textStyle="bold" android:textColor="@color/text_dark" android:textSize="15sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Optional. Encrypted exports only." android:textSize="12sp" android:textColor="@color/text_muted" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button android:id="@+id/btnConnectDrive" style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Select Google account" android:textSize="12sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Delete local copy after upload:" android:textSize="12sp" android:textColor="@color/text_muted" />
+            <Spinner android:id="@+id/spinnerAutoDelete" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- App lock -->
+    <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle">
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\uD83D\uDD12" android:textSize="18sp" android:gravity="center" />
+            </FrameLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="App lock" android:textStyle="bold" android:textColor="@color/text_dark" android:textSize="15sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Your phone's fingerprint/PIN — nothing separate to forget." android:textSize="12sp" android:textColor="@color/text_muted" />
+            </LinearLayout>
+            <androidx.appcompat.widget.SwitchCompat android:id="@+id/switchAppLock" android:layout_width="wrap_content" android:layout_height="wrap_content" android:showText="false" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Hide icon -->
+    <com.google.android.material.card.MaterialCardView android:id="@+id/btnHideIcon" style="@style/SettingsCard">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle">
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\uD83D\uDC41\uFE0F" android:textSize="18sp" android:gravity="center" />
+            </FrameLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hide app icon" android:textStyle="bold" android:textColor="@color/text_dark" android:textSize="15sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Removes it from your home screen only. Still in Settings > Apps." android:textSize="12sp" android:textColor="@color/text_muted" />
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\u203A" android:textSize="20sp" android:textColor="@color/text_muted" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- App logs -->
+    <com.google.android.material.card.MaterialCardView android:id="@+id/btnViewLogs" style="@style/SettingsCard">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle">
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\uD83D\uDCCB" android:textSize="18sp" android:gravity="center" />
+            </FrameLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="App logs" android:textStyle="bold" android:textColor="@color/text_dark" android:textSize="15sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Operational health only — never message content." android:textSize="12sp" android:textColor="@color/text_muted" />
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\u203A" android:textSize="20sp" android:textColor="@color/text_muted" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- About -->
+    <com.google.android.material.card.MaterialCardView style="@style/SettingsCard">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle">
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\u2139\uFE0F" android:textSize="18sp" android:gravity="center" />
+            </FrameLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="About" android:textStyle="bold" android:textColor="@color/text_dark" android:textSize="15sp" />
+                <TextView android:id="@+id/tvAbout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="12sp" android:textColor="@color/text_muted" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Danger zone -->
+    <com.google.android.material.card.MaterialCardView android:id="@+id/btnDeleteAll" style="@style/SettingsCard" app:strokeColor="@color/danger" app:strokeWidth="1dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <FrameLayout android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle">
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\uD83D\uDDD1\uFE0F" android:textSize="18sp" android:gravity="center" />
+            </FrameLayout>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:text="Stop logging and delete all data" android:textStyle="bold" android:textColor="@color/danger" android:textSize="15sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
+</ScrollView>
+
+<!-- App-lock overlay -->
+<LinearLayout
+    android:id="@+id/lockOverlay"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/bg" android:orientation="vertical" android:gravity="center"
+    android:visibility="gone">
+    <FrameLayout android:layout_width="72dp" android:layout_height="72dp" android:background="@drawable/bg_icon_circle" android:layout_marginBottom="16dp">
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="\uD83D\uDD12" android:textSize="28sp" android:gravity="center" />
+    </FrameLayout>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Biz Logger is locked" android:textSize="18sp" android:textColor="@color/text_dark" android:layout_marginBottom="18dp" />
+    <Button android:id="@+id/btnUnlock" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Unlock" />
+</LinearLayout>
+
+</FrameLayout>

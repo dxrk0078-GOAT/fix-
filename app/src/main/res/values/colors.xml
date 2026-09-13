@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#EEF3F4</color>
+    <color name="teal_primary">#1B98A8</color>
+    <color name="teal_dark">#0E6E7C</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="text_dark">#12303A</color>
+    <color name="text_muted">#66808A</color>
+    <color name="danger">#C0392B</color>
+    <color name="icon_circle_bg">#DFF2F4</color>
+</resources>
